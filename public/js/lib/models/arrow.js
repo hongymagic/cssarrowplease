@@ -7,7 +7,7 @@ if (!('CSSArrowPlease' in window)) window.CSSArrowPlease = {};
   @class Arrow
   @constructor
   **/
-  var Arrow = function () { 
+  var Arrow = function () {
     this.init.apply(this, arguments);
   };
 
@@ -22,9 +22,9 @@ if (!('CSSArrowPlease' in window)) window.CSSArrowPlease = {};
 
     /**
     @method invertedPosition
-    @description 
+    @description
       returns the opposite of the position
-      so 'top' becomes 'bottom' and 'left' becomes 'right' 
+      so 'top' becomes 'bottom' and 'left' becomes 'right'
     @returns {String}
     **/
     invertedPosition: function () {
@@ -57,7 +57,7 @@ if (!('CSSArrowPlease' in window)) window.CSSArrowPlease = {};
 
       css += '}\n';
       css += '.arrow_box:after';
-      
+
       if (hasBorder)  css += ', .arrow_box:before {\n';
       else            css += ' {\n';
 
@@ -80,15 +80,18 @@ if (!('CSSArrowPlease' in window)) window.CSSArrowPlease = {};
     @description generates arrow css
     @param {String} color the color of the arrow
     @param {Integer} size the size of the arrow
+    @param {Integer} offset from top or left in percentage (defaults to 50)
     @param {String} layer :after or :before (defaults to :after)
     @returns {String} css
     @protected
     **/
-    _arrowCSS: function (color, size, layer) {
+    _arrowCSS: function (color, size, offset, layer) {
       var pos       = this.get('position'),
+          offset    = this.get('offset'),
           iPos      = this.invertedPosition(),
           css       = ".arrow_box:";
 
+      offset = offset || 50;
       layer = layer || 'after';
 
       css += layer + ' {\n';
@@ -97,10 +100,10 @@ if (!('CSSArrowPlease' in window)) window.CSSArrowPlease = {};
       css += '\tborder-width: ' + size + 'px;\n';
 
       if (pos === 'top' || pos === 'bottom') {
-        css += '\tleft: 50%;\n\tmargin-left: -' + size + 'px;\n';
+        css += '\tleft: ' + offset + '%;\n\tmargin-left: -' + size + 'px;\n';
       }
       else {
-        css += '\ttop: 50%;\n\tmargin-top: -' + size + 'px;\n';
+        css += '\ttop: ' + offset + '%;\n\tmargin-top: -' + size + 'px;\n';
       }
 
       css += '}';
@@ -131,7 +134,7 @@ if (!('CSSArrowPlease' in window)) window.CSSArrowPlease = {};
     _arrowBorderCSS: function () {
       var css = '',
           borderWidth = this.get('borderWidth');
-      
+
       if (borderWidth > 0) {
         css = this._arrowCSS(
           this.get('borderColor'),
@@ -219,7 +222,7 @@ if (!('CSSArrowPlease' in window)) window.CSSArrowPlease = {};
       var $self = this._$self;
 
       $self.on(
-        evType, 
+        evType,
         $.proxy(callback, context || this)
       );
     },
@@ -242,6 +245,7 @@ if (!('CSSArrowPlease' in window)) window.CSSArrowPlease = {};
     position:     'top',
     size:         30,
     color:        '#88b7d5',
+    offset:       50,
     borderWidth:  4,
     borderColor:  '#c2e1f5'
   };

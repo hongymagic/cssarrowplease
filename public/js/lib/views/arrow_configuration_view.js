@@ -7,7 +7,7 @@ if (!('CSSArrowPlease' in window)) window.CSSArrowPlease = {};
   @class ArrowConfigurationView
   @constructor
   **/
-  var ArrowConfigurationView = function () { 
+  var ArrowConfigurationView = function () {
     this.init.apply(this, arguments);
   };
 
@@ -38,6 +38,7 @@ if (!('CSSArrowPlease' in window)) window.CSSArrowPlease = {};
           model     = this.model;
 
       container.find('.position').val([ model.get('position') ]);
+      container.find('.offset').val( model.get('offset') );
       container.find('.size').val( model.get('size') );
       container.find('.base_color').val( model.get('color') );
       container.find('.border_width').val( model.get('borderWidth') );
@@ -54,6 +55,7 @@ if (!('CSSArrowPlease' in window)) window.CSSArrowPlease = {};
           _updateInputProxy = $.proxy( this._updateInput, this),
           container         = this.container,
           selectors         = [ { classname: '.position',      keyboard_interactive: false },
+                                { classname: '.offset',        keyboard_interactive: false },
                                 { classname: '.size',          keyboard_interactive: true },
                                 { classname: '.base_color',    keyboard_interactive: false },
                                 { classname: '.border_width',  keyboard_interactive: true },
