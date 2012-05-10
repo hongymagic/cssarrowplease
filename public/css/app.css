@@ -38,6 +38,7 @@ input                         { font-size: 14px; border: 1px solid #777; box-sha
 /* configuration */
 .configuration                    { margin-top: 20px; }
 .configuration .section           { float: left; width: 195px; font-size: 20px }
+.configuration .section.offset,
 .configuration .section.positions { width: 140px; margin-left: 14px }
 .configuration .section li        { margin-bottom: 5px; }
 .configuration .section label     { display: inline-block; width: 112px; }
