@@ -46,6 +46,7 @@ if (!('CSSArrowPlease' in window)) window.CSSArrowPlease = {};
       var iPos        = this.invertedPosition(),
           color       = this.get('color'),
           borderWidth = this.get('borderWidth'),
+          offset      = this.get('offset'),
           borderColor = this.get('borderColor'),
           hasBorder   = borderWidth > 0,
           css         = '.arrow_box {\n';
@@ -85,7 +86,7 @@ if (!('CSSArrowPlease' in window)) window.CSSArrowPlease = {};
     @returns {String} css
     @protected
     **/
-    _arrowCSS: function (color, size, offset, layer) {
+    _arrowCSS: function (color, size, layer) {
       var pos       = this.get('position'),
           offset    = this.get('offset'),
           iPos      = this.invertedPosition(),
